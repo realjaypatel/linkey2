@@ -216,26 +216,22 @@
         <!--/.panel-body -->
 
         <div class="panel-footer clearfix">
-          <a href="/download/1917860.torrent"
-            ><i class="fa fa-download fa-fw"></i>Download Torrent</a
-          >
-          or
+
           <a
-            href="magnet:?xt=urn:btih:c9e4ab6928585ec1ed5ee72452efe4068782d21a&amp;dn=%5BSubsPlease%5D%20Solo%20Leveling%20-%2013%20%281080p%29%20%5B69C63E88%5D.mkv&amp;tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&amp;tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce"
+            href="{{data.link}}"
             class="card-footer-item"
-            ><i class="fa fa-magnet fa-fw"></i>Magnet</a
+            ><i class="fa fa-external-link fa-fw"></i>Download or View Site</a
           >
         </div>
       </div>
       <!--/.panel -->
 
       <div class="panel panel-default">
-        <div markdown-text class="panel-body" id="torrent-description">
-          {{data.desc}}
-        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+        <div markdown-text class="panel-body markdown-body" id="torrent-description">{{data.desc | safe}}</div>
       </div>
 
-      <div class="panel panel-default">
+      <!-- <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">File list</h3>
         </div>
@@ -248,7 +244,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
       <!--/.panel -->
 
       <div id="comments" class="panel panel-default">
@@ -260,10 +256,10 @@
             aria-expanded="true"
             aria-controls="collapse-comments"
           >
-            <h3 class="panel-title">Comments - 12</h3>
+            <h3 class="panel-title">Comments - {{comments | length}}</h3>
           </a>
         </div>
-        <div class="collapse in" id="collapse-comments">
+        <div class="collapse" id="collapse-comments">
           <div>
             <form action="/add/submit_comment" method="post">
               <div class="form-group">
@@ -282,13 +278,13 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Comment</label>
-                <input
+                <textarea
                   type="text"
                   class="form-control"
                   id="exampleInputPassword1"
                   name="comment"
                   placeholder="Shit!!!, link is not working"
-                />
+                /></textarea>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Rating</label>
@@ -348,8 +344,7 @@
                     markdown-text
                     class="comment-content"
                     id="torrent-comment851181"
-                  >
-                    {{comment.comment}}
+                  >{{comment.comment| safe}}
                   </div>
                 </div>
               </div>

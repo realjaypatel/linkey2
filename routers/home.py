@@ -18,7 +18,7 @@ router = APIRouter(
 async def return_home(request: Request,p: int = Query(1, alias="p"), c: str = Query("all", alias="c"),q: str = Query("None",alias="q")):
     print(c,q,p)
     items = []
-    page_size = 3
+    page_size = 20
     skip = (p - 1) * page_size
     limit = page_size
     if q == "None" and c == "all":

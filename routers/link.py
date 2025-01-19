@@ -50,7 +50,7 @@ async def submit_form(title: str = Form(...), link: str = Form(...), category: s
 
     database.db.insert_one(user_data)
     # return "done"
-    # return RedirectResponse(url=f'/view/{unique_id}', status_code=302)
+    return RedirectResponse(url=f'/view/{unique_id}', status_code=302)
 
 @router.get("/users")
 async def get_users():

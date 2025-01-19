@@ -8,7 +8,6 @@ import requests
 
 
 
-
 router = APIRouter(
     # prefix='/',
     tags=['home']

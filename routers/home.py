@@ -22,7 +22,7 @@ async def return_home(request: Request,p: int = Query(1, alias="p"), c: str = Qu
     skip = (p - 1) * page_size
     limit = page_size
     if q == "None" and c == "all":
-        items = list(database.db.find().skip(skip).limit(limit))
+        items = list(database.db.find().sort("_id", -1).skip(skip).limit(limit))
     elif (q == "None" and c != "all") or (q == "" and c != "all"):
         items = list(database.db.find(
             {"category": c}
@@ -52,7 +52,7 @@ async def get_items(p: int = Query(1, alias="p")):
     page_size = 1
     skip = (p - 1) * page_size
     limit = page_size
-    items = list(database.db.find().skip(skip).limit(limit))
+    items = list(database.db.find().sort("_id", -1).skip(skip).limit(limit))
     for item in items:
         item["_id"] = str(item["_id"])  # Convert ObjectId to string for JSON serialization
     return items

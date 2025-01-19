@@ -25,10 +25,8 @@ async def return_home(unique_id,request: Request):
     print(unique_id)
     try:    
         post_data = database.db.find_one({"unique_id": int(unique_id)})
-        print(post_data)
         if post_data:
-            user_comment = list(database.comment_db.find({'post_id': unique_id}))
-            print('user comm', user_comment)
+            user_comment = list(database.comment_db.find({'post_id': unique_id}).sort("_id", -1))
             return templates.TemplateResponse("product.html", {"request": request,"data":post_data,"comments":user_comment})
 
             return post_data

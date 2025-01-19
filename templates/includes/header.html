@@ -1,0 +1,115 @@
+<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+	<div class="container">
+	  <div class="navbar-header">
+		<button
+		  type="button"
+		  class="navbar-toggle collapsed"
+		  data-toggle="collapse"
+		  data-target="#navbar"
+		  aria-expanded="false"
+		  aria-controls="navbar"
+		>
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="https://nyaa.land">Nyaa.Land</a>
+	  </div>
+	  <!--/.navbar-header -->
+	  <div id="navbar" class="navbar-collapse collapse">
+		<ul class="nav navbar-nav">
+		  <li></li>
+
+		  <li><a href="/add">Add</a></li>
+		  <li></li>
+		  <li></li>
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right"></ul>
+
+		<div class="search-container visible-xs visible-sm">
+		  <form class="navbar-form navbar-right form" action="/" method="get">
+			<input
+			  type="text"
+			  class="form-control"
+			  name="q"
+			  placeholder="Search..."
+			  value=""
+			/>
+			<br />
+
+			<select
+			  class="form-control"
+			  title="Category"
+			  data-width="200px"
+			  name="c"
+			>
+
+			  <option value="all" selected>All Categories</option>
+			  <option value="anime">Anime</option>
+			  <option value="audio">Audio</option>
+			  <option value="books">Books</option>
+			  <option value="literature">Literature</option>
+			  <option value="movie">Movie</option>
+			  <option value="photos">Photos</option>
+			  <option value="youtube">Youtube</option>
+			  <option value="software">Software</option>
+			  <option value="games">Games</option>
+			  <option value="application">Application</option>
+
+			</select>
+
+			<br />
+
+			<button class="btn btn-primary form-control" type="submit">
+			  <i class="fa fa-search fa-fw"></i> Search
+			</button>
+		  </form>
+		</div>
+		<!--/.search-container -->
+
+		<form class="navbar-form navbar-right form" action="/" method="get">
+		  <div class="input-group search-container hidden-xs hidden-sm">
+			<div class="input-group-btn nav-filter" id="navFilter-criteria">
+			  <!--
+								  On narrow viewports, there isn't enough room to fit the full stuff in the selectpicker, so we show a full-width one on wide viewports, but squish it on narrow ones.
+							  -->
+			  <select
+				class="selectpicker show-tick"
+				title="Category"
+				data-width="130px"
+				name="c"
+			  >
+				<option value="all" selected>All Categories</option>
+				<option value="anime">Anime</option>
+				<option value="audio">Audio</option>
+				<option value="books">Books</option>
+				<option value="literature">Literature</option>
+				<option value="movie">Movie</option>
+				<option value="photos">Photos</option>
+				<option value="youtube">Youtube</option>
+				<option value="software">Software</option>
+				<option value="games">Games</option>
+				<option value="application">Application</option>
+			  </select>
+			</div>
+			<input
+			  type="text"
+			  class="form-control search-bar"
+			  name="q"
+			  placeholder="Search..."
+			  value=""
+			/>
+			<div class="input-group-btn search-btn">
+			  <button class="btn btn-primary" type="submit">
+				<i class="fa fa-search fa-fw"></i>
+			  </button>
+			</div>
+		  </div>
+		</form>
+	  </div>
+	  <!--/.nav-collapse -->
+	</div>
+	<!--/.container -->
+  </nav>

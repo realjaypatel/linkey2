@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Table by Name</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <table id="sampleTable">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th id="sort-name">Name</th>
+                <th>Downloads</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Audio</td>
+                <td>Audioslave</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>Video</td>
+                <td>Breaking Bad</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>Document</td>
+                <td>Python Guide</td>
+                <td>150</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('sort-name').addEventListener('click', function() {
+            sortTableByName();
+        });
+
+        function sortTableByName() {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("sampleTable");
+            switching = true;
+            dir = "asc"; // Set the sorting direction to ascending
+
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[1];
+                    y = rows[i + 1].getElementsByTagName("TD")[1];
+
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

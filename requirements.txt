@@ -1,0 +1,6 @@
+fastapi
+pymongo
+uvicorn
+jinja2
+requests
+python-multipart

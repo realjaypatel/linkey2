@@ -24,12 +24,14 @@ data = {
 async def return_home(unique_id,request: Request):
     print(unique_id)
     try:    
-        user_data = database.db.find_one({"unique_id": int(unique_id)})
-        print(user_data)
-        if user_data:
-            return templates.TemplateResponse("product.html", {"request": request,"data":user_data})
+        post_data = database.db.find_one({"unique_id": int(unique_id)})
+        print(post_data)
+        if post_data:
+            user_comment = list(database.comment_db.find({'post_id': unique_id}))
+            print('user comm', user_comment)
+            return templates.TemplateResponse("product.html", {"request": request,"data":post_data,"comments":user_comment})
 
-            return user_data
+            return post_data
         else:
             raise HTTPException(status_code=404, detail="Data not found")
     except:

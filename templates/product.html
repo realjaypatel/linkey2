@@ -125,7 +125,9 @@
     {% include "includes/header.html" %}
     <div align="center">
       <a href="https://privateiptvaccess.com"
-        ><img style="height: 250px" src="/static/p2.jpg"
+        ><img
+          style="height: 250px"
+          src="https://media.istockphoto.com/id/1142554243/photo/funny-brown-french-bulldog-dog-dressed-up-in-pirate-costume-with-hat-and-hook-arm-standing-at.jpg?s=612x612&w=0&k=20&c=alWTVpEGoNH-UpE4WhCy0JMa-PULpTy6UioMzH24FP4="
       /></a>
     </div>
     <br />
@@ -229,7 +231,7 @@
 
       <div class="panel panel-default">
         <div markdown-text class="panel-body" id="torrent-description">
-  {{data.desc}}
+          {{data.desc}}
         </div>
       </div>
 
@@ -262,86 +264,58 @@
           </a>
         </div>
         <div class="collapse in" id="collapse-comments">
-          <div class="panel panel-default comment-panel" id="com-1">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/Kazumato"
-                    data-toggle="tooltip"
-                    title="User"
-                    >Kazumato</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="/static/img/avatar/default.png"
-                  alt="User"
+          <div>
+            <form action="/add/submit_comment" method="post">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter random name"
+                  name="name"
+                />
+                <small id="emailHelp" class="form-text text-muted"
+                  >this will be an anonimous comment.</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Comment</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  name="comment"
+                  placeholder="Shit!!!, link is not working"
                 />
               </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-1"
-                    ><small data-timestamp-swap data-timestamp="1736014559"
-                      >2025-01-04 18:15 UTC</small
-                    ></a
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment851178"
-                  >
-                    Wohooo! Solo Masterpiece is back baby!
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel panel-default comment-panel" id="com-2">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/Jeanberry"
-                    data-toggle="tooltip"
-                    title="User"
-                    >Jeanberry</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="/static/img/avatar/default.png"
-                  alt="User"
+              <div class="form-group">
+                <label for="exampleInputPassword1">Rating</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  min="0"
+                  max="10"
+                  step="1"
+                  placeholder="0-10"
+                  name="rating"
                 />
               </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-2"
-                    ><small data-timestamp-swap data-timestamp="1736016483"
-                      >2025-01-04 18:48 UTC</small
-                    ></a
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment851180"
-                  >
-                    Overrated Leveling is back, oh no.
-                  </div>
-                </div>
-              </div>
-            </div>
+              <input hidden type="text" value="" name="post_id" id="post_id" />
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <script>
+                const url = window.location.href;
+                const postId = url.match(/view\/(\d+)/)[1];
+                document.getElementById("post_id").value = postId;
+              </script>
+            </form>
           </div>
 
+
+
+          {% for comment in comments %}
           <div class="panel panel-default comment-panel" id="com-3">
             <div class="panel-body">
               <div class="col-md-2">
@@ -351,20 +325,20 @@
                     href="/user/Calcifer"
                     data-toggle="tooltip"
                     title="User"
-                    >Calcifer</a
+                    >{{comment.name}} - {{comment.rating}}❤️</a
                   >
                 </p>
                 <img
                   class="avatar"
-                  src="https://i2.wp.com/nyaa.land/user/Calcifer/avatar-W7VJQQ?ssl=1"
+                  src="https://avatar.iran.liara.run/public/boy?username={{comment.name}}"
                   alt="User"
                 />
               </div>
               <div class="col-md-10 comment">
                 <div class="row comment-details">
                   <a href="#com-3"
-                    ><small data-timestamp-swap data-timestamp="1736017243"
-                      >2025-01-04 19:00 UTC</small
+                    ><small data-timestamp-swap data-timestamp="{{comment.comment}}"
+                      >{{comment.timestamp}}</small
                     ></a
                   >
                   <div class="comment-actions"></div>
@@ -375,403 +349,13 @@
                     class="comment-content"
                     id="torrent-comment851181"
                   >
-                    ...think i&#39;ve read thru volume viii so... meh...
-                    whatever
+                    {{comment.comment}}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="panel panel-default comment-panel" id="com-4">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/Handelo"
-                    data-toggle="tooltip"
-                    title="User"
-                    >Handelo</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="https://i2.wp.com/nyaa.land/user/Handelo/avatar-Y1G9bw?ssl=1"
-                  alt="User"
-                />
-              </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-4"
-                    ><small data-timestamp-swap data-timestamp="1736018603"
-                      >2025-01-04 19:23 UTC</small
-                    ></a
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment851184"
-                  >
-                    Can&#39;t wait for the rest of the Sister Leveling season
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel panel-default comment-panel" id="com-5">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/Gradius"
-                    data-toggle="tooltip"
-                    title="User"
-                    >Gradius</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="https://i2.wp.com/nyaa.land/user/Gradius/avatar-Y_b_vw?ssl=1"
-                  alt="User"
-                />
-              </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-5"
-                    ><small data-timestamp-swap data-timestamp="1736040070"
-                      >2025-01-05 01:21 UTC</small
-                    ></a
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment851240"
-                  >
-                    Thanks! Love this anime. Very dark, madness stuff going on.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel panel-default comment-panel" id="com-6">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/MetalicBox"
-                    data-toggle="tooltip"
-                    title="User"
-                    >MetalicBox</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="/static/img/avatar/default.png"
-                  alt="User"
-                />
-              </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-6"
-                    ><small data-timestamp-swap data-timestamp="1736041822"
-                      >2025-01-05 01:50 UTC</small
-                    ></a
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment851241"
-                  >
-                    S2 Is going to cover some of the best parts of the series,
-                    S1 was basically just a prologue. Great to see it back
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel panel-default comment-panel" id="com-7">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/Killuaalt"
-                    data-toggle="tooltip"
-                    title="User"
-                    >Killuaalt</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="https://i0.wp.com/nyaa.land/user/Killuaalt/avatar-ZgfaVg?ssl=1"
-                  alt="User"
-                />
-              </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-7"
-                    ><small data-timestamp-swap data-timestamp="1736061065"
-                      >2025-01-05 07:11 UTC</small
-                    ></a
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment851259"
-                  >
-                    waste of a-1 pictures talents
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel panel-default comment-panel" id="com-8">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/Rowan"
-                    data-toggle="tooltip"
-                    title="User"
-                    >Rowan</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="https://i0.wp.com/nyaa.land/user/Rowan/avatar-XNn-6Q?ssl=1"
-                  alt="User"
-                />
-              </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-8"
-                    ><small data-timestamp-swap data-timestamp="1736107290"
-                      >2025-01-05 20:01 UTC</small
-                    ></a
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment851317"
-                  >
-                    @Killuaalt agreed. Let&#39;s not forget the author of Solo
-                    Leveling was a fervent anti-Japanese racist either, or that
-                    he made all the Japanese characters look like absolute
-                    douches and villains either. Honestly with how anti-Japan he
-                    was and the bit that leaked into the source material really
-                    makes me wonder why a MC power-fantasy that&#39;s a dime a
-                    dozen would even be adapted by the Japanese of all people.
-                    Money I guess, but it&#39;s really disgraceful.&#10;inb4
-                    someone gets mad at me I really don&#39;t care, popular =/=
-                    right, go back to Reddit and seethe.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel panel-default comment-panel" id="com-9">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/traque"
-                    data-toggle="tooltip"
-                    title="User"
-                    >traque</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="/static/img/avatar/default.png"
-                  alt="User"
-                />
-              </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-9"
-                    ><small data-timestamp-swap data-timestamp="1736170117"
-                      >2025-01-06 13:28 UTC</small
-                    ></a
-                  >
-                  <small
-                    data-timestamp-swap
-                    data-timestamp-title
-                    data-timestamp="1736170129.0"
-                    title="2025-01-06 13:28:49"
-                    >(edited)</small
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment851403"
-                  >
-                    Done watching, still lots of &#34;emotion emphasis&#34;
-                    missing. At this point you&#39;ll just be watching this for
-                    its action and animation, I feel bad for non-readers to not
-                    getting the whole &#34;feels&#34; of the story.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel panel-default comment-panel" id="com-10">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/Kirakishou"
-                    data-toggle="tooltip"
-                    title="User"
-                    >Kirakishou</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="https://i2.wp.com/nyaa.land/user/Kirakishou/avatar-VAocQQ?ssl=1"
-                  alt="User"
-                />
-              </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-10"
-                    ><small data-timestamp-swap data-timestamp="1736253177"
-                      >2025-01-07 12:32 UTC</small
-                    ></a
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment851543"
-                  >
-                    @Rowan&#10;I didn’t know about that. So, if you&#39;re
-                    Korean or Chinese and an anti-Japanese racist, your works
-                    get adapted into anime. But if you&#39;re a Japanese author
-                    and post something about Chinese people on Twitter, your
-                    manga and novel get shut down, and the anime gets canceled,
-                    like with Nidome no Jinsei wo Isekai de?
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel panel-default comment-panel" id="com-11">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/domwx"
-                    data-toggle="tooltip"
-                    title="User"
-                    >domwx</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="https://i2.wp.com/nyaa.land/user/domwx/avatar-Z4Mt8w?ssl=1"
-                  alt="User"
-                />
-              </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-11"
-                    ><small data-timestamp-swap data-timestamp="1736317125"
-                      >2025-01-08 06:18 UTC</small
-                    ></a
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment851662"
-                  >
-                    really what better use for contemporary animation knowledge
-                    and skills could there be, than pissing out another
-                    overbudgeted formulaic nonstory crushed into 12-24-36
-                    episodes in almost gleeful disregard of the tinpot auteurism
-                    dripping out of the meatholes of talentless weebs on the
-                    internet
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel panel-default comment-panel" id="com-12">
-            <div class="panel-body">
-              <div class="col-md-2">
-                <p>
-                  <a
-                    class="text-default"
-                    href="/user/yasser77"
-                    data-toggle="tooltip"
-                    title="User"
-                    >yasser77</a
-                  >
-                </p>
-                <img
-                  class="avatar"
-                  src="https://i2.wp.com/nyaa.land/user/yasser77/avatar-XtCsFQ?ssl=1"
-                  alt="User"
-                />
-              </div>
-              <div class="col-md-10 comment">
-                <div class="row comment-details">
-                  <a href="#com-12"
-                    ><small data-timestamp-swap data-timestamp="1736603031"
-                      >2025-01-11 13:43 UTC</small
-                    ></a
-                  >
-                  <div class="comment-actions"></div>
-                </div>
-                <div class="row comment-body">
-                  <div
-                    markdown-text
-                    class="comment-content"
-                    id="torrent-comment852107"
-                  >
-                    Is the episode 2 delayed or smth?
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {%endfor%}
         </div>
       </div>
     </div>

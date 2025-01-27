@@ -1,18 +1,7 @@
-{% include "includes/header.html" %}
-
-
-
-
-
-
-
-
-
-
     <!-- Comment form modal -->
     <div class="modal fade" id="commentForm" data-bs-backdrop="static" tabindex="-1" aria-labelledby="commentFormLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <form class="modal-content needs-validation" action="/add/submit_comment" method="post">
+        <form class="modal-content needs-validation" novalidate="">
           <div class="modal-header border-0">
             <h5 class="modal-title" id="commentFormLabel">Leave a comment</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -20,32 +9,23 @@
           <div class="modal-body pb-3 pt-0">
             <div class="mb-3">
               <label for="review-name" class="form-label">Your name <span class="text-danger">*</span></label>
-              <input name="name" type="text" class="form-control rounded-pill" id="review-name" required="">
+              <input type="text" class="form-control rounded-pill" id="review-name" required="">
               <div class="invalid-feedback">Please enter your name!</div>
               <small class="form-text">Will be displayed on the comment.</small>
             </div>
             <div class="mb-3">
-              <label for="review-email" class="form-label">Your rating <span class="text-danger">*</span></label>
-              <input  name="rating" min="0"
-              max="10"
-              step="1"
-              placeholder="0-10" type="number" class="form-control rounded-pill" id="review-email" required="">
+              <label for="review-email" class="form-label">Your email <span class="text-danger">*</span></label>
+              <input type="email" class="form-control rounded-pill" id="review-email" required="">
               <div class="invalid-feedback">Please provide a valid email address!</div>
               <small class="form-text">Authentication only - we won't spam you.</small>
             </div>
             <div>
               <label class="form-label" for="review-text">Comment <span class="text-danger">*</span></label>
-              <textarea name="comment" class="form-control rounded-6" rows="5" id="review-text" required=""></textarea>
+              <textarea class="form-control rounded-6" rows="5" id="review-text" required=""></textarea>
               <div class="invalid-feedback">Please write your comment!</div>
               <small class="form-text">Your comment must be at least 50 characters.</small>
             </div>
           </div>
-          <input hidden type="text" value="" name="post_id" id="post_id" />
-          <script>
-            const url = window.location.href;
-            const postId = url.match(/view\/(\d+)/)[1];
-            document.getElementById("post_id").value = postId;
-          </script>
           <div class="modal-footer flex-nowrap gap-3 border-0 px-4">
             <button type="reset" class="btn btn-secondary w-100 rounded-pill m-0" data-bs-dismiss="modal">Cancel</button>
             <button type="submit" class="btn btn-dark w-100 rounded-pill m-0">Submit</button>
@@ -74,7 +54,7 @@
         <!-- Page title + Product meta -->
         <div class="row">
           <div class="col-lg-8 col-xl-9">
-            <h1 class="h3 mb-sm-4">{{data.title}}</h1>
+            <h1 class="h3 mb-sm-4">A stunning set of tablet pro mockups for professionals</h1>
 
             <!-- Product meta + Action buttons -->
             <div class="d-flex flex-column flex-md-row align-items-md-center gap-3 gap-md-4">
@@ -95,7 +75,7 @@
                 <!-- Number of sales badge -->
                 <span class="badge text-info bg-info-subtle d-inline-flex align-items-center fs-sm">
                   <i class="ci-download fs-base me-1"></i>
-                  
+                  65 sales
                 </span>
 
                 <!-- Likes + Comments + Sharing -->
@@ -106,7 +86,7 @@
                   </button>
                   <a class="btn btn-sm btn-secondary rounded-pill animate-scale" href="#comments">
                     <i class="ci-message-circle animate-target fs-sm ms-n1 me-1"></i>
-                    {{comments | length}}
+                    3
                   </a>
                   <div class="dropdown">
                     <button type="button" class="btn btn-icon btn-sm btn-secondary animate-scale rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share">
@@ -145,10 +125,34 @@
 
             <!-- Gallery -->
             <div class="vstack gap-3">
-              <a class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded-4 overflow-hidden" href="" data-glightbox="" data-gallery="product-gallery">
+              <a class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded-4 overflow-hidden" href="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/01.jpg" data-glightbox="" data-gallery="product-gallery">
                 <i class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"></i>
                 <div class="ratio hover-effect-target bg-body-tertiary" style="--cz-aspect-ratio: calc(640 / 966 * 100%)">
-                  <img src="{{data.img}}" alt="Image">
+                  <img src="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/01.jpg" alt="Image">
+                </div>
+              </a>
+              <div class="row row-cols-2 g-3">
+                <div class="col">
+                  <a class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded-4 overflow-hidden" href="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/02.jpg" data-glightbox="" data-gallery="product-gallery">
+                    <i class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"></i>
+                    <div class="ratio ratio-1x1 hover-effect-target bg-body-tertiary">
+                      <img src="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/th02.jpg" alt="Image">
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded-4 overflow-hidden" href="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/03.jpg" data-glightbox="" data-gallery="product-gallery">
+                    <i class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"></i>
+                    <div class="ratio ratio-1x1 hover-effect-target bg-body-tertiary">
+                      <img src="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/th03.jpg" alt="Image">
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <a class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded-4 overflow-hidden" href="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/04.jpg" data-glightbox="" data-gallery="product-gallery">
+                <i class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"></i>
+                <div class="ratio hover-effect-target bg-body-tertiary" style="--cz-aspect-ratio: calc(640 / 966 * 100%)">
+                  <img src="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/04.jpg" alt="Image">
                 </div>
               </a>
             </div>
@@ -195,17 +199,35 @@
 
             <!-- Overview -->
             <h2 class="h4 pt-5 mt-md-2 mb-lg-4">Overview</h2>
-            <p>{{data.desc | safe}}</p>
+            <p>Elevate your presentations and design projects with this meticulously crafted set of Tablet Pro Mockups. Designed with professionals in mind, these mockups are perfect for showcasing your apps, websites, or digital products in a sleek and modern way. Here's what makes this set stand out.</p>
+            <p class="mb-0">This Tablet Pro Mockup Set is an essential tool for designers who want to present their work professionally and impress clients or audiences with stunning, high-quality visuals.</p>
 
             <!-- Highlights -->
-
+            <h2 class="h4 pt-5 mt-md-2 mb-lg-4">Highlights</h2>
+            <ul class="mb-0">
+              <li>The set includes a variety of angles and perspectives</li>
+              <li>Easily insert your designs into the mockups using smart objects in Adobe Photoshop</li>
+              <li>These mockups feature professionally crafted lighting and shadow effects</li>
+              <li>The backgrounds of these mockups are fully customizable</li>
+              <li>Choose from different color options for the tablet device</li>
+            </ul>
 
             <!-- Tags visible on screens < 992px wide (lg breakpoint) -->
-
+            <h2 class="h4 d-lg-none pt-5 mt-md-2 mb-lg-4">Tags</h2>
+            <div class="d-flex d-lg-none flex-wrap gap-2 mt-n1">
+              <a class="badge fs-sm text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">mockup tablet</a>
+              <a class="badge fs-sm text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">device mockup</a>
+              <a class="badge fs-sm text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">screen</a>
+              <a class="badge fs-sm text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">application</a>
+              <a class="badge fs-sm text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">app mockup</a>
+              <a class="badge fs-sm text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">mobile</a>
+              <a class="badge fs-sm text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">ui/ux</a>
+              <a class="badge fs-sm text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">placeholder</a>
+            </div>
 
             <!-- Comments -->
             <div class="d-flex align-items-center gap-3 pt-5 mt-md-2 mb-3" id="comments" style="scroll-margin-top: 60px">
-              <h2 class="h4 mb-0">Comments ({{comments | length}})</h2>
+              <h2 class="h4 mb-0">Comments (3)</h2>
               <button type="button" class="btn btn-outline-secondary rounded-pill ms-auto" data-bs-toggle="modal" data-bs-target="#commentForm">
                 <i class="ci-edit-3 fs-base ms-n1 me-2"></i>
                 Leave a comment
@@ -214,33 +236,80 @@
             <div class="bg-body-tertiary rounded-4 p-4 p-sm-5">
               <div class="vstack gap-3 gap-md-4 mt-n3">
 
-                {% for comment in comments %}
                 <!-- Comment -->
                 <div class="mt-3">
                   <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
                     <div class="d-flex align-items-center">
                       <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 40px">
-                        <img src="https://avatar.iran.liara.run/public/boy?username={{comment.name}}" alt="Avatar">
+                        <img src="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/comments/01.jpg" alt="Avatar">
                       </div>
                       <div class="ps-2 ms-1">
-                        <div class="fs-sm fw-semibold text-dark-emphasis mb-1">{{comment.name}}</div>
-                        <div class="fs-xs text-body-secondary">{{comment.timestamp}}</div>
+                        <div class="fs-sm fw-semibold text-dark-emphasis mb-1">Randy Walker</div>
+                        <div class="fs-xs text-body-secondary">October 28, 2024</div>
                       </div>
                     </div>
                     <div class="d-flex gap-2">
                       <button type="button" class="btn btn-sm btn-secondary bg-body border-0 animate-pulse rounded-pill">
                         <i class="ci-heart animate-target fs-sm ms-n1 me-1"></i>
-                        {{comment.rating}}
+                        12
                       </button>
-                      <!-- <button type="button" class="btn btn-icon btn-sm btn-secondary bg-body border-0 animate-slide-end rounded-circle" aria-label="Reply">
+                      <button type="button" class="btn btn-icon btn-sm btn-secondary bg-body border-0 animate-slide-end rounded-circle" aria-label="Reply">
                         <i class="ci-corner-up-right animate-target fs-sm"></i>
-                      </button> -->
+                      </button>
                     </div>
                   </div>
-                  <p class="fs-sm mb-0">{{comment.comment | safe}}</p>
+                  <p class="fs-sm mb-0">This set of Tablet Pro mockups exceeded my expectations! The high resolution and attention to detail make my designs look incredibly polished. The smart objects make editing a breeze, and the realistic lighting adds a professional touch to all my presentations. Highly recommend it for anyone serious about their design work.</p>
                 </div>
-                {%endfor%}
 
+                <!-- Comment -->
+                <div class="mt-3">
+                  <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
+                    <div class="d-flex align-items-center">
+                      <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 40px">
+                        <img src="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/comments/02.jpg" alt="Avatar">
+                      </div>
+                      <div class="ps-2 ms-1">
+                        <div class="fs-sm fw-semibold text-dark-emphasis mb-1">Daniel Adams</div>
+                        <div class="fs-xs text-body-secondary">August 15, 2024</div>
+                      </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <button type="button" class="btn btn-sm btn-secondary bg-body border-0 animate-pulse rounded-pill">
+                        <i class="ci-heart animate-target fs-sm ms-n1 me-1"></i>
+                        6
+                      </button>
+                      <button type="button" class="btn btn-icon btn-sm btn-secondary bg-body border-0 animate-slide-end rounded-circle" aria-label="Reply">
+                        <i class="ci-corner-up-right animate-target fs-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <p class="fs-sm mb-0">I've used a lot of mockups, but these are some of the best. The variety of angles and perspectives really helped me showcase my app from different viewpoints. Plus, the customizable backgrounds are a fantastic feature—I could easily match the mockups to my brand colors. A must-have for designers!</p>
+                </div>
+
+                <!-- Comment -->
+                <div class="mt-3">
+                  <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
+                    <div class="d-flex align-items-center">
+                      <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 40px">
+                        <img src="https://cartzilla-html.createx.studio/assets/img/shop/marketplace/single/comments/03.jpg" alt="Avatar">
+                      </div>
+                      <div class="ps-2 ms-1">
+                        <div class="fs-sm fw-semibold text-dark-emphasis mb-1">Darrell Steward</div>
+                        <div class="fs-xs text-body-secondary">June 2, 2024</div>
+                      </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <button type="button" class="btn btn-sm btn-secondary bg-body border-0 animate-pulse rounded-pill">
+                        <i class="ci-heart animate-target fs-sm ms-n1 me-1"></i>
+                        19
+                      </button>
+                      <button type="button" class="btn btn-icon btn-sm btn-secondary bg-body border-0 animate-slide-end rounded-circle" aria-label="Reply">
+                        <i class="ci-corner-up-right animate-target fs-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <p class="fs-sm mb-0">The quality of these mockups is superb, and they're incredibly easy to use. The only thing I'd love to see is a few more device color options to match different product lines. Other than that, it's a fantastic set that's well worth the investment.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -259,35 +328,66 @@
                     <div class="accordion-header d-flex justify-content-between align-items-center py-3">
                       <div class="form-check m-0 collapsed" data-bs-toggle="collapse" data-bs-target="#standard-license">
                         <input class="form-check-input" type="radio" name="license" id="license-std" checked="">
-                        <label class="form-check-label fw-medium text-dark-emphasis" for="license-std">Link</label>
+                        <label class="form-check-label fw-medium text-dark-emphasis" for="license-std">Standard license</label>
                       </div>
-                      <div class="h6 mb-0"></div>
+                      <div class="h6 mb-0">$16</div>
                     </div>
                     <div class="accordion-collapse collapse show" id="standard-license" data-bs-parent="#licenses">
                       <div class="accordion-body py-0 pb-2">
                         <ul class="list-unstyled fs-sm">
                           <li class="d-flex align-items-center">
                             <i class="ci-check-circle text-info me-2"></i>
-                            <span class="fs-ms">{{data.link}}</span>
+                            <span class="fs-ms">Quality verified</span>
                           </li>
-
+                          <li class="d-flex align-items-center">
+                            <i class="ci-check-circle text-info me-2"></i>
+                            <span class="fs-ms">Use for a single project</span>
+                          </li>
+                          <li class="d-flex align-items-center">
+                            <i class="ci-check-circle text-info me-2"></i>
+                            <span class="fs-ms">Non-paying users only</span>
+                          </li>
                         </ul>
                       </div>
                     </div>
                   </div>
-          
+                  <div class="accordion-item">
+                    <div class="accordion-header d-flex justify-content-between align-items-center py-3">
+                      <div class="form-check m-0" data-bs-toggle="collapse" data-bs-target="#extended-license">
+                        <input type="radio" class="form-check-input" name="license" id="license-ext">
+                        <label class="form-check-label fw-medium text-dark-emphasis" for="license-ext">Extended license</label>
+                      </div>
+                      <div class="h6 mb-0">$99</div>
+                    </div>
+                    <div class="accordion-collapse collapse border-0" id="extended-license" data-bs-parent="#licenses">
+                      <div class="accordion-body py-0 pb-2">
+                        <ul class="list-unstyled fs-sm">
+                          <li class="d-flex align-items-center">
+                            <i class="ci-check-circle text-info me-2"></i>
+                            <span class="fs-ms">Quality verified</span>
+                          </li>
+                          <li class="d-flex align-items-center">
+                            <i class="ci-check-circle text-info me-2"></i>
+                            <span class="fs-ms">Use for a single project</span>
+                          </li>
+                          <li class="d-flex align-items-center">
+                            <i class="ci-check-circle text-info me-2"></i>
+                            <span class="fs-ms">Paying users allowed</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <button type="button" class="btn btn-lg btn-dark w-100 rounded-pill animate-scale mt-1 mb-3">
-                  <a href="{{data.link}}">
                   <i class="ci-shopping-bag fs-lg animate-target me-2 ms-n1"></i>
-                  Download or Visit
-                </a>
+                  Add to cart
                 </button>
               </div>
 
               <!-- Product info -->
               <div class="ps-4 pe-3 mb-4">
-                <h4 class="h6 pb-2 mb-1">Link info</h4>
+                <h4 class="h6 pb-2 mb-1">Product info</h4>
                 <table class="table table-borderless table-sm fs-sm mb-0">
                   <tbody>
                     <tr>
@@ -303,25 +403,44 @@
                         </div>
                       </td>
                     </tr>
-
+                    <tr>
+                      <td class="text-body-secondary ps-0">Last update</td>
+                      <td class="text-dark-emphasis pe-0">21 October 2024</td>
+                    </tr>
                     <tr>
                       <td class="text-body-secondary ps-0">Published</td>
-                      <td class="text-dark-emphasis pe-0"> {{data.timestamp}}</td>
+                      <td class="text-dark-emphasis pe-0">10 August 2024</td>
                     </tr>
-
+                    <tr>
+                      <td class="text-body-secondary ps-0">High resolution</td>
+                      <td class="text-dark-emphasis pe-0">Yes</td>
+                    </tr>
                     <tr>
                       <td class="text-body-secondary ps-0">File type</td>
-                      <td class="text-dark-emphasis pe-0">Unknown</td>
+                      <td class="text-dark-emphasis pe-0">FIG, PSD, JPG</td>
                     </tr>
                     <tr>
                       <td class="text-body-secondary ps-0">File size</td>
-                      <td class="text-dark-emphasis pe-0">{{data.size}}</td>
+                      <td class="text-dark-emphasis pe-0">140.8 MB</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
-
+              <!-- Tags -->
+              <div class="ps-4 pe-3">
+                <h4 class="h6 pb-2 mb-1">Tags</h4>
+                <div class="d-flex flex-wrap gap-2 mt-n1">
+                  <a class="badge text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">mockup tablet</a>
+                  <a class="badge text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">device mockup</a>
+                  <a class="badge text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">screen</a>
+                  <a class="badge text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">application</a>
+                  <a class="badge text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">app mockup</a>
+                  <a class="badge text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">mobile</a>
+                  <a class="badge text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">ui/ux</a>
+                  <a class="badge text-body-emphasis bg-body-secondary text-decoration-none mt-1 me-1" href="#!">placeholder</a>
+                </div>
+              </div>
             </div>
           </aside>
         </div>
@@ -583,36 +702,3 @@
       </section>
     </main>
 
-
-
-
-
-    {% include "includes/footer.html" %}
-
-
-
-
-
-
-
-
-
-
-    <div class="fixed-bottom z-sticky d-flex d-lg-none w-100 gap-2 bg-dark border-top border-light border-opacity-10 p-3 pb-4">
-      <div class="w-100" style="min-width: 175px" data-bs-theme="dark">
-        <label class="form-label m-0">License</label>
-        <div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false"><div class="form-select border-0 rounded-0 p-0"><select class="form-select rounded-pill choices__input" data-select="{
-          &quot;classNames&quot;: {
-            &quot;containerInner&quot;: [&quot;form-select&quot;, &quot;border-0&quot;, &quot;rounded-0&quot;, &quot;p-0&quot;]
-          },
-          &quot;removeItemButton&quot;: false
-        }" aria-label="Small pill select" hidden="" tabindex="-1" data-choice="active">
-          <option value="standard" selected="">Standard - $16</option>
-          <option value="extended">Extended - $99</option>
-        </select><div class="choices__list choices__list--single"><div class="choices__item choices__item--selectable" data-item="" data-id="1" data-value="standard" aria-selected="true" role="option">Standard - $16</div></div></div><div class="choices__list choices__list--dropdown" aria-expanded="false"><div class="choices__list" role="listbox"><div id="choices--009w-item-choice-1" class="choices__item choices__item--choice is-selected choices__item--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="standard" data-choice-selectable="" aria-selected="true">Standard - $16</div><div id="choices--009w-item-choice-2" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="2" data-value="extended" data-choice-selectable="">Extended - $99</div></div></div></div>
-      </div>
-      <button type="button" class="btn btn-light bg-white w-100 rounded-pill animate-scale">
-        <i class="ci-shopping-bag fs-base animate-target me-2 ms-n1"></i>
-        Add to cart
-      </button>
-    </div>

@@ -21,8 +21,11 @@ async def return_home(request: Request,p: int = Query(1, alias="p"), c: str = Qu
     page_size = 20
     skip = (p - 1) * page_size
     limit = page_size
+    home = False
+    
     if q == "None" and c == "all":
         items = list(database.db.find().sort("_id", -1).skip(skip).limit(limit))
+        home = True
     elif (q == "None" and c != "all") or (q == "" and c != "all"):
         items = list(database.db.find(
             {"category": c}
@@ -43,7 +46,7 @@ async def return_home(request: Request,p: int = Query(1, alias="p"), c: str = Qu
     print(items)
     for item in items:
         item["_id"] = str(item["_id"])
-    return templates.TemplateResponse("home.html", {"request": request,"Data":items})
+    return templates.TemplateResponse("home.html", {"request": request,"Data":items,"home":home})
 
 
 @router.get("/items/")

@@ -4,7 +4,7 @@
 <main class="content-wrapper">
   {%if home%}
   <section
-    class="position-relative pb-5"
+    class="position-relative pb-5 home_main"
     style="margin-top: -76px; padding-top: 76px"
   >
     <div class="container position-relative z-1 py-md-3 py-lg-4 py-xl-5">
@@ -63,7 +63,7 @@
               style="--cz-aspect-ratio: calc(130 / 196 * 100%)"
             >
               <img
-                src="assets/img/home/marketplace/categories/02.jpg"
+                src="https://cartzilla-html.createx.studio/assets/img/home/marketplace/categories/02.jpg"
                 class="hover-effect-target"
                 alt="Image"
               />
@@ -90,7 +90,7 @@
               style="--cz-aspect-ratio: calc(130 / 196 * 100%)"
             >
               <img
-                src="assets/img/home/marketplace/categories/03.jpg"
+                src="https://cartzilla-html.createx.studio/assets/img/home/marketplace/categories/03.jpg"
                 class="hover-effect-target"
                 alt="Image"
               />
@@ -117,7 +117,7 @@
               style="--cz-aspect-ratio: calc(130 / 196 * 100%)"
             >
               <img
-                src="assets/img/home/marketplace/categories/04.jpg"
+                src="https://cartzilla-html.createx.studio/assets/img/home/marketplace/categories/04.jpg"
                 class="hover-effect-target"
                 alt="Image"
               />
@@ -144,7 +144,7 @@
               style="--cz-aspect-ratio: calc(130 / 196 * 100%)"
             >
               <img
-                src="assets/img/home/marketplace/categories/05.jpg"
+                src="https://cartzilla-html.createx.studio/assets/img/home/marketplace/categories/05.jpg"
                 class="hover-effect-target"
                 alt="Image"
               />
@@ -171,7 +171,7 @@
               style="--cz-aspect-ratio: calc(130 / 196 * 100%)"
             >
               <img
-                src="assets/img/home/marketplace/categories/06.jpg"
+                src="https://cartzilla-html.createx.studio/assets/img/home/marketplace/categories/06.jpg"
                 class="hover-effect-target"
                 alt="Image"
               />
@@ -190,67 +190,12 @@
         </div>
       </div>
 
-      <!-- Formats -->
-      <div class="d-sm-flex align-items-center gap-4 pb-2 pb-sm-4">
-        <h2 class="fs-sm fw-medium mb-sm-0">Browse by most popular formats</h2>
-        <div class="d-flex gap-3">
-          <a
-            class="ratio ratio-1x1 d-flex flex-shrink-0"
-            href="#!"
-            style="width: 20px"
-          >
-            <img
-              src="assets/img/home/marketplace/formats/figma.png"
-              alt="Figma"
-            />
-          </a>
-          <a
-            class="ratio ratio-1x1 d-flex flex-shrink-0"
-            href="#!"
-            style="width: 20px"
-          >
-            <img
-              src="assets/img/home/marketplace/formats/framer.png"
-              alt="Framer"
-            />
-          </a>
-          <a
-            class="ratio ratio-1x1 d-flex flex-shrink-0"
-            href="#!"
-            style="width: 20px"
-          >
-            <img
-              src="assets/img/home/marketplace/formats/illustrator.png"
-              alt="Illustrator"
-            />
-          </a>
-          <a
-            class="ratio ratio-1x1 d-flex flex-shrink-0"
-            href="#!"
-            style="width: 20px"
-          >
-            <img
-              src="assets/img/home/marketplace/formats/webflow.png"
-              alt="Webflow"
-            />
-          </a>
-          <a
-            class="ratio ratio-1x1 d-flex flex-shrink-0"
-            href="#!"
-            style="width: 20px"
-          >
-            <img
-              src="assets/img/home/marketplace/formats/photoshop.png"
-              alt="Photoshop"
-            />
-          </a>
-        </div>
-      </div>
+
     </div>
 
     <!-- Background -->
     <div
-      class="position-absolute top-0 start-0 w-100 h-100 d-none-dark"
+      class="position-absolute top-0 start-0 w-100 h-100 d-none-dark home_main"
       style="
         background: linear-gradient(
           90deg,
@@ -382,14 +327,30 @@
     </div>
 
     <!-- View all button -->
-    <div class="text-center pt-3 mt-2 mt-sm-3">
-      <a
-        class="btn btn-lg btn-dark rounded-pill animate-slide-end"
-        href="shop-catalog-marketplace.html"
-      >
-        Explore all resources
-        <i class="ci-chevron-right animate-target fs-lg ms-1 me-n1"></i>
-      </a>
+    <div class="mt-2" style="
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+">
+
+        <ul class="pagination" id="pagination">
+          <!-- <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">«</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">»</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li> -->
+        </ul>
+
     </div>
   </section>
 
@@ -593,3 +554,81 @@
 </main>
 
 {% include "includes/footer.html" %}
+
+
+
+
+
+<style>
+      .home_main{
+    background-image: url(https://img.freepik.com/premium-photo/roman-splendor-exquisite-ancient-roman-painting-background-1920x550-px-resolution_983420-41505.jpg);
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return parseInt(urlParams.get(param)) || 1;
+    }
+
+    function createPagination(currentPage, totalPages) {
+      const pagination = document.getElementById('pagination');
+      pagination.innerHTML = '';
+
+      const createPageItem = (page, text = page) => {
+        const li = document.createElement('li');
+        li.className = 'page-item' + (page === currentPage ? ' active' : '');
+        const a = document.createElement('a');
+        a.className = 'page-link';
+        a.href = `?p=${page}`;
+        a.textContent = text;
+        li.appendChild(a);
+        return li;
+      };
+
+      if (currentPage > 1) {
+        pagination.appendChild(createPageItem(currentPage - 1, '«'));
+      }
+
+      for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+        pagination.appendChild(createPageItem(i));
+      }
+
+      if (currentPage < totalPages) {
+        pagination.appendChild(createPageItem(currentPage + 1, '»'));
+      }
+    }
+
+    const currentPage = getQueryParam('p');
+    const totalPages = 50; // Change this to your total number of pages
+    createPagination(currentPage, totalPages);
+  </script>

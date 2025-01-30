@@ -23,6 +23,8 @@ async def return_home(request: Request,p: int = Query(1, alias="p"), c: str = Qu
     limit = page_size
     home = False
     
+    
+        
     if q == "None" and c == "all":
         items = list(database.db.find().sort("_id", -1).skip(skip).limit(limit))
         home = True
@@ -31,6 +33,7 @@ async def return_home(request: Request,p: int = Query(1, alias="p"), c: str = Qu
             {"category": c}
         ).skip(skip).limit(limit))
     elif (q != "None" and c == "all"):
+        
         items = list(database.db.find(
             {"title": {"$regex": q, "$options": "i"}}
         ).skip(skip).limit(limit))
@@ -42,7 +45,8 @@ async def return_home(request: Request,p: int = Query(1, alias="p"), c: str = Qu
         ).skip(skip).limit(limit))
 
   
-    
+    if p !=1:
+        home = False
     print(items)
     for item in items:
         item["_id"] = str(item["_id"])

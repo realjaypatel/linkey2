@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Fallback</title>
+</head>
+<body>
+    <img src="http://g.com/img.png" alt="Sample Image 1" data-fallback="https://cartzilla-html.createx.studio/assets/img/home/marketplace/categories/04.jpg">
+    <img src="http://g.com/img1.png" alt="Sample Image 2" data-fallback="https://cartzilla-html.createx.studio/assets/img/home/marketplace/categories/04.jpg">
+    <img src="http://g.com/img3.png" alt="Sample Image 3" data-fallback="https://cartzilla-html.createx.studio/assets/img/home/marketplace/categories/04.jpg">
+
+    <script>
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.onerror = function() {
+                const fallbackSrc = img.getAttribute('data-fallback');
+                if (fallbackSrc) {
+                    img.src = fallbackSrc;
+                }
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,3 +1,12 @@
+<script>
+  const images = document.querySelectorAll('img');
+  console.log('as : ',images)
+  images.forEach(img => {
+      img.onerror = function() {
+          img.src = 'https://cartzilla-html.createx.studio/assets/img/home/marketplace/categories/04.jpg';
+      };
+  });
+</script>
 {% include "includes/header.html" %}
 
 <!-- Comment form modal -->
@@ -127,7 +136,6 @@
           <div class="nav align-items-center gap-2 fs-sm">
             <a
               class="nav-link text-body gap-1 p-0"
-              href="shop-catalog-marketplace.html"
             >
               <div
                 class="flex-shrink-0 border rounded-circle"
@@ -140,22 +148,21 @@
                   />
                 </div>
               </div>
-              Createx Studio
+              {{data.username}}
             </a>
             <div class="text-body-secondary">in</div>
             <a
               class="nav-link text-body p-0"
-              href="shop-catalog-marketplace.html"
-              >Mockups</a
+              href="/?c={{data.category}}"
+              >{{data.category}}</a
             >
           </div>
           <div class="d-flex justify-content-between flex-grow-1 gap-4">
             <!-- Number of sales badge -->
             <span
-              class="badge text-info bg-info-subtle d-inline-flex align-items-center fs-sm"
+             
             >
-              <i class="ci-download fs-base me-1"></i>
-            </span>
+              </span>
 
             <!-- Likes + Comments + Sharing -->
             <div class="d-flex gap-2">
@@ -175,40 +182,7 @@
                 ></i>
                 {{comments | length}}
               </a>
-              <div class="dropdown">
-                <button
-                  type="button"
-                  class="btn btn-icon btn-sm btn-secondary animate-scale rounded-circle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  aria-label="Share"
-                >
-                  <i class="ci-share-2 animate-target fs-sm"></i>
-                </button>
-                <ul
-                  class="dropdown-menu dropdown-menu-end"
-                  style="--cz-dropdown-min-width: 8.5rem"
-                >
-                  <li>
-                    <a class="dropdown-item" href="#!">
-                      <i class="ci-facebook fs-base me-2"></i>
-                      Facebook
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#!">
-                      <i class="ci-instagram fs-base me-2"></i>
-                      Instagram
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <i class="ci-linkedin fs-base me-2"></i>
-                      LinkedIn
-                    </a>
-                  </li>
-                </ul>
-              </div>
+             
             </div>
           </div>
         </div>
@@ -218,24 +192,7 @@
       <!-- Product gallery + Description -->
       <div class="col-lg-8 col-xl-9">
         <!-- Gallery -->
-        <div class="vstack gap-3">
-          <a
-            class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded-4 overflow-hidden"
-            href=""
-            data-glightbox=""
-            data-gallery="product-gallery"
-          >
-            <i
-              class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"
-            ></i>
-            <div
-              class="ratio hover-effect-target bg-body-tertiary"
-              style="--cz-aspect-ratio: calc(640 / 966 * 100%)"
-            >
-              <img src="{{data.img}}" alt="Image" />
-            </div>
-          </a>
-        </div>
+      
 
         <!-- Product info visible on screens < 992px wide (lg breakpoint) -->
         <h2 class="h4 d-lg-none pt-5 mt-md-2 mb-lg-4">Product info</h2>
@@ -290,7 +247,7 @@
         </table>
 
         <!-- Overview -->
-        <h2 class="h4 pt-5 mt-md-2 mb-lg-4">Overview</h2>
+        <!-- <h2 class="h4 pt-5 mt-md-2 mb-lg-4">Overview</h2> -->
         <p>{{data.desc | safe}}</p>
 
         <!-- Highlights -->
@@ -354,7 +311,7 @@
                       </button> -->
                 </div>
               </div>
-              <p class="fs-sm mb-0">{{comment.comment | safe}}</p>
+              <p class="fs-sm mb-0" style="overflow: auto;">{{comment.comment | safe}}</p>
             </div>
             {%endfor%}
           </div>
@@ -371,28 +328,24 @@
           <div class="border rounded-4 py-2 px-4 mb-4">
             <div class="accordion accordion-flush" id="licenses">
               <div class="accordion-item">
-                <div
-                  class="accordion-header d-flex justify-content-between align-items-center py-3"
-                >
-                  <div
-                    class="form-check m-0 collapsed"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#standard-license"
+                
+                <div class="vstack gap-3">
+                  <a
+                    class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded-4 overflow-hidden"
+                    href=""
+                    data-glightbox=""
+                    data-gallery="product-gallery"
                   >
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="license"
-                      id="license-std"
-                      checked=""
-                    />
-                    <label
-                      class="form-check-label fw-medium text-dark-emphasis"
-                      for="license-std"
-                      >Link</label
+                    <i
+                      class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"
+                    ></i>
+                    <div
+                      class="ratio hover-effect-target bg-body-tertiary"
+                      style="--cz-aspect-ratio: calc(640 / 966 * 100%)"
                     >
-                  </div>
-                  <div class="h6 mb-0"></div>
+                      <img src="{{data.img}}" alt="Image" />
+                    </div>
+                  </a>
                 </div>
                 <div
                   class="accordion-collapse collapse show"
@@ -402,8 +355,8 @@
                   <div class="accordion-body py-0 pb-2">
                     <ul class="list-unstyled fs-sm">
                       <li class="d-flex align-items-center">
-                        <i class="ci-check-circle text-info me-2"></i>
-                        <span class="fs-ms">{{data.link}}</span>
+                        <!-- <i class="ci-check-circle text-info me-2"></i>
+                        <span class="fs-ms">{{data.link}}</span> -->
                       </li>
                     </ul>
                   </div>
@@ -414,7 +367,7 @@
               type="button"
               class="btn btn-lg btn-dark w-100 rounded-pill animate-scale mt-1 mb-3"
             >
-              <a href="{{data.link}}">
+              <a href="{{data.link}}" style="color: white; text-decoration: none;">
                 <i class="ci-shopping-bag fs-lg animate-target me-2 ms-n1"></i>
                 Download or Visit
               </a>
@@ -423,38 +376,14 @@
 
           <!-- Product info -->
           <div class="ps-4 pe-3 mb-4">
-            <h4 class="h6 pb-2 mb-1">Link info</h4>
+            <h4 class="h6 pb-2 mb-1">Link Info</h4>
             <table class="table table-borderless table-sm fs-sm mb-0">
               <tbody>
-                <tr>
-                  <td class="text-body-secondary ps-0">Format</td>
-                  <td class="text-dark-emphasis pe-0">
-                    <div class="d-flex gap-3">
-                      <div
-                        class="ratio ratio-1x1 d-flex flex-shrink-0"
-                        style="width: 18px"
-                      >
-                        <img
-                          src="https://cartzilla-html.createx.studio/assets/img/home/marketplace/formats/figma.png"
-                          alt="Figma"
-                        />
-                      </div>
-                      <div
-                        class="ratio ratio-1x1 d-flex flex-shrink-0"
-                        style="width: 18px"
-                      >
-                        <img
-                          src="https://cartzilla-html.createx.studio/assets/img/home/marketplace/formats/photoshop.png"
-                          alt="Photoshop"
-                        />
-                      </div>
-                    </div>
-                  </td>
-                </tr>
+             
 
                 <tr>
                   <td class="text-body-secondary ps-0">Published</td>
-                  <td class="text-dark-emphasis pe-0">{{data.timestamp}}</td>
+                  <td class="text-dark-emphasis pe-0">{{data.timestamp[0:10]}}</td>
                 </tr>
 
                 <tr>
@@ -531,3 +460,13 @@
     Link
   </button>
 </div>
+
+
+
+
+
+
+
+
+
+
